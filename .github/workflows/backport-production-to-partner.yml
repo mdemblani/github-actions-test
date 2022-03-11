@@ -14,20 +14,20 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Create temporary branch from Production to backport changes to Partner
-        uses: peterjgrainger/action-create-branch@v2.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          branch: backport-production-to-partner
-
-
-      - name: Update temporary branch with latest changes on Production
-        uses: Embraser01/update-git-branch-action@v1.0.0
-        with:
-            branch: backport-production-to-partner
-            force: 1
-            githubToken: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Create temporary branch from Production to backport changes to Partner
+#        uses: peterjgrainger/action-create-branch@v2.0.1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          branch: backport-production-to-partner
+#
+#
+#      - name: Update temporary branch with latest changes on Production
+#        uses: Embraser01/update-git-branch-action@v1.0.0
+#        with:
+#            branch: backport-production-to-partner
+#            force: 1
+#            githubToken: ${{ secrets.GITHUB_TOKEN }}
 
 #       TODO: UNCOMMENT AND THIS BLOCK SHOULD UPDATE THE PR
 #      - name: Backport
