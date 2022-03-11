@@ -1,0 +1,51 @@
+name: Backport Production to Partner
+
+on:
+  push:
+    branches:
+      - feature/backport-bot
+
+jobs:
+  backport:
+    name: Backport
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Create temporary branch from Production to backport changes to Partner
+        uses: peterjgrainger/action-create-branch@v2.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: backport-production-to-partner
+
+
+      - name: Update temporary branch with latest changes on Production
+        uses: Embraser01/update-git-branch-action@v1.0.0
+        with:
+            branch: backport-production-to-partner
+            force: 1
+            githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+#       TODO: UNCOMMENT AND THIS BLOCK SHOULD UPDATE THE PR
+#      - name: Backport
+#        id: backport
+#        uses: cristiammercado/backport-pr@v1
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          pr-from-branch: huspy:backport-production-to-partner
+#          pr-to-branch: partner
+#          pr-body: "[Backport PR] From Production to Partner"
+#          pr-fail-if-exists: false
+#          pr-update-if-exists: true
+#          merge-commit-title: "[Backport PR] Production to Partner"
+#          merge-commit-body: "- Merge changes from Production to Partner"
+#          merge-method: merge
+
+      - name: Output from action
+        run: |
+          echo "PR Number: ${{ steps.backport.outputs.pr_number }}"
+          echo "PR URL: ${{ steps.backport.outputs.pr_url }}"
+          echo "PR SHA: ${{ steps.backport.outputs.pr_sha }}"
