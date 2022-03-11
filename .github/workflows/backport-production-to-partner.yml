@@ -21,7 +21,7 @@ jobs:
         with:
           branch: backport-production-to-partner
 
-#
+#      TODO: UNCOMMENT AND THIS BLOCK SHOULD UPDATE THE BRANCH
 #      - name: Update temporary branch with latest changes on Production
 #        uses: Embraser01/update-git-branch-action@v1.0.0
 #        with:
