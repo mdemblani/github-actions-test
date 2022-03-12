@@ -33,7 +33,7 @@ jobs:
         uses: cristiammercado/backport-pr@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          pr-from-branch: huspy:backport-production-to-partner
+          pr-from-branch: mdemblani:backport-production-to-partner
           pr-to-branch: partner
           pr-body: "[Backport PR] From Production to Partner"
           pr-fail-if-exists: false
