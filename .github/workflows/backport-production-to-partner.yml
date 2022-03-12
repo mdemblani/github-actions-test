@@ -39,7 +39,7 @@ jobs:
           pr-body: "
             [![Backport Production to Partner](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml)
             \n\n
-            Merge changes from Production to Partner
+            Merge changes from Production to Partner via temporary branch `backport-production-to-partner`
           "
           pr-fail-if-exists: false
           pr-update-if-exists: true
