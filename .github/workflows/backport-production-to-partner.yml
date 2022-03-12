@@ -36,7 +36,11 @@ jobs:
           pr-from-branch: mdemblani:backport-production-to-partner
           pr-to-branch: partner
           pr-title: "[Backport PR] From Production to Partner"
-          pr-body: "[![Backport Production to Partner](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml)\nMerge changes from Production to Partner"
+          pr-body: "
+            [![Backport Production to Partner](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml)
+
+            Merge changes from Production to Partner
+          "
           pr-fail-if-exists: false
           pr-update-if-exists: true
 
