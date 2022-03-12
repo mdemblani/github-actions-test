@@ -35,9 +35,13 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr-from-branch: mdemblani:backport-production-to-partner
           pr-to-branch: partner
-          pr-body: "[Backport PR] From Production to Partner"
+          pr-title: "[Backport PR] From Production to Partner"
+          pr-body: "Merge changes from Production to Partner"
           pr-fail-if-exists: false
           pr-update-if-exists: true
-          merge-commit-title: "[Backport PR] Production to Partner"
-          merge-commit-body: "Merge changes from Production to Partner"
-          merge-method: merge
+
+      - name: Output from action
+          run: |
+            echo "PR Number: ${{ steps.backport.outputs.pr-number }}"
+            echo "PR URL: ${{ steps.backport.outputs.pr-url }}"
+            echo "PR SHA: ${{ steps.backport.outputs.pr-sha }}"
