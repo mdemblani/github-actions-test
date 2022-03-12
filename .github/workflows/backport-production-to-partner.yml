@@ -26,7 +26,7 @@ jobs:
         uses: connor-baer/action-sync-branch@main
         with:
             branch: backport-production-to-partner
-            force: 1
+            force: false
             token: ${{ secrets.GITHUB_TOKEN }}
 
 #       TODO: UNCOMMENT AND THIS BLOCK SHOULD UPDATE THE PR
