@@ -21,7 +21,6 @@ jobs:
         with:
           branch: backport-production-to-partner
 
-#      TODO: UNCOMMENT AND THIS BLOCK SHOULD UPDATE THE BRANCH
       - name: Update temporary branch with latest changes on Production
         uses: connor-baer/action-sync-branch@main
         with:
@@ -29,20 +28,19 @@ jobs:
             force: false
             token: ${{ secrets.GITHUB_TOKEN }}
 
-#       TODO: UNCOMMENT AND THIS BLOCK SHOULD UPDATE THE PR
-#      - name: Backport
-#        id: backport
-#        uses: cristiammercado/backport-pr@v1
-#        with:
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#          pr-from-branch: huspy:backport-production-to-partner
-#          pr-to-branch: partner
-#          pr-body: "[Backport PR] From Production to Partner"
-#          pr-fail-if-exists: false
-#          pr-update-if-exists: true
-#          merge-commit-title: "[Backport PR] Production to Partner"
-#          merge-commit-body: "- Merge changes from Production to Partner"
-#          merge-method: merge
+      - name: Backport
+        id: backport
+        uses: cristiammercado/backport-pr@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pr-from-branch: huspy:backport-production-to-partner
+          pr-to-branch: partner
+          pr-body: "[Backport PR] From Production to Partner"
+          pr-fail-if-exists: false
+          pr-update-if-exists: true
+          merge-commit-title: "[Backport PR] Production to Partner"
+          merge-commit-body: "- Merge changes from Production to Partner"
+          merge-method: merge
 
       - name: Output from action
         run: |
