@@ -12,10 +12,10 @@ jobs:
     steps:
 
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Create temporary branch from Production to backport changes to Partner
-        uses: peterjgrainger/action-create-branch@v2.0.1
+        uses: peterjgrainger/action-create-branch@v2.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -39,7 +39,7 @@ jobs:
           pr-fail-if-exists: false
           pr-update-if-exists: true
           merge-commit-title: "[Backport PR] Production to Partner"
-          merge-commit-body: "- Merge changes from Production to Partner"
+          merge-commit-body: "Merge changes from Production to Partner"
           merge-method: merge
 
       - name: Output from action
