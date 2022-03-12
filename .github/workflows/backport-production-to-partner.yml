@@ -24,9 +24,9 @@ jobs:
       - name: Update temporary branch with latest changes on Production
         uses: connor-baer/action-sync-branch@main
         with:
-            branch: backport-production-to-partner
-            force: false
-            token: ${{ secrets.GITHUB_TOKEN }}
+          branch: backport-production-to-partner
+          force: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Backport
         id: backport
@@ -41,7 +41,7 @@ jobs:
           pr-update-if-exists: true
 
       - name: Output from action
-          run: |
-            echo "PR Number: ${{ steps.backport.outputs.pr-number }}"
-            echo "PR URL: ${{ steps.backport.outputs.pr-url }}"
-            echo "PR SHA: ${{ steps.backport.outputs.pr-sha }}"
+        run: |
+          echo "PR Number: ${{ steps.backport.outputs.pr-number }}"
+          echo "PR URL: ${{ steps.backport.outputs.pr-url }}"
+          echo "PR SHA: ${{ steps.backport.outputs.pr-sha }}"
