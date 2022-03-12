@@ -38,7 +38,7 @@ jobs:
           pr-title: "[Backport PR] From Production to Partner"
           pr-body: "
             [![Backport Production to Partner](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml)
-            \n
+            \n\n
             Merge changes from Production to Partner
           "
           pr-fail-if-exists: false
