@@ -41,9 +41,3 @@ jobs:
           merge-commit-title: "[Backport PR] Production to Partner"
           merge-commit-body: "Merge changes from Production to Partner"
           merge-method: merge
-
-      - name: Output from action
-        run: |
-          echo "PR Number: ${{ steps.backport.outputs.pr_number }}"
-          echo "PR URL: ${{ steps.backport.outputs.pr_url }}"
-          echo "PR SHA: ${{ steps.backport.outputs.pr_sha }}"
