@@ -28,6 +28,18 @@ jobs:
           force: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate changelog
+        id: changelog
+        uses: metcalfc/changelog-generator@v3.0.0
+        with:
+          myToken: ${{ secrets.GITHUB_TOKEN }}
+          head-ref: backport-production-to-partner
+          base-ref: partner
+
+      - name: CHANGELOG
+        run: |
+          echo "PR Number: ${{ steps.changelog.outputs.changelog }}"
+
       - name: Backport
         id: backport
         uses: cristiammercado/backport-pr@v1
@@ -38,8 +50,13 @@ jobs:
           pr-title: "[Backport PR] From Production to Partner"
           pr-body: "
             [![Backport Production to Partner](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/backport-production-to-partner.yml)
-
+            \n
             Merge changes from Production to Partner
+            \n
+            <details>
+              <summary>Commits</summary>
+              ${{ steps.changelog.outputs.changelog }}
+            </details>
           "
           pr-fail-if-exists: false
           pr-update-if-exists: true
