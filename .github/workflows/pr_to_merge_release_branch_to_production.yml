@@ -6,7 +6,7 @@ on:
       - release/**
 
 env:
-  master_branch: ${{ env.master_branch }}
+  master_branch: master
 
 jobs:
   pr-to-production:
