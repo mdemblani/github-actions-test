@@ -7,7 +7,7 @@ on:
 
 jobs:
   pr-to-production:
-    name: 'Open a PR from "${{ steps.branch-name.outputs.current_branch }}" to "production"'
+    name: 'Open a PR from "${GITHUB_REF##*/}" to "production"'
     runs-on: ubuntu-latest
     steps:
 
