@@ -33,7 +33,7 @@ jobs:
         uses: cristiammercado/cm-backport-pr@1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          pr-from-branch: mdemblani:${{ steps.branch-name.outputs.current_branch }}
+          pr-from-branch: mdemblani:${{ github.ref_name }}
           pr-to-branch: master
           pr-title: '[Release PR] From Release "${{ steps.branch-name.outputs.current_branch }}" to Production'
           pr-body: '
