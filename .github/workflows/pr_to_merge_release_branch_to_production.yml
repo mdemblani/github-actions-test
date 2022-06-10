@@ -1,0 +1,49 @@
+name: Open PR from Release Branch to Production
+
+on:
+  push:
+    branches:
+      - release/**
+
+jobs:
+  pr-to-production:
+    name: 'Open a PR from "${{ steps.branch-name.outputs.current_branch }}" to "production"'
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+#      - name: Create temporary branch from Production to backport changes to Partner
+#        uses: peterjgrainger/action-create-branch@v2.2.0
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          branch: backport-production-to-partner
+
+#      - name: Update temporary branch with latest changes on Production
+#        uses: connor-baer/action-sync-branch@main
+#        with:
+#          branch: backport-production-to-partner
+#          force: false
+#          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open PR
+        id: open-pr
+        uses: cristiammercado/cm-backport-pr@1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pr-from-branch: mdemblani:${{ steps.branch-name.outputs.current_branch }}
+          pr-to-branch: production
+          pr-title: '[Release PR] From Release "${{ steps.branch-name.outputs.current_branch }}" to Production'
+          pr-body: '
+            [![Backport Production to Partner](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_production.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_production.yml)
+            \n\n
+            Merge changes from Release **`${{ steps.branch-name.outputs.current_branch }}`** to Production
+          '
+          pr-fail-if-exists: false
+          pr-update-if-exists: true
+
+      - name: Output from action
+        run: |
+          echo "PR URL: ${{ steps.ope.outputs.pr-url }}"
