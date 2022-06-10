@@ -17,20 +17,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-#      - name: Create temporary branch from ${{ env.master_branch }} to backport changes to Partner
-#        uses: peterjgrainger/action-create-branch@v2.2.0
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          branch: backport-${{ env.master_branch }}-to-partner
-
-#      - name: Update temporary branch with latest changes on ${{ env.master_branch }}
-#        uses: connor-baer/action-sync-branch@main
-#        with:
-#          branch: backport-${{ env.master_branch }}-to-partner
-#          force: false
-#          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Open PR
         id: open-pr
         uses: cristiammercado/cm-backport-pr@1.0.0
