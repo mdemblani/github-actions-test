@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Release And Trigger Production Pipeline
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+    inputs:
+      choice:
+        type: choice
+        description: Make a choice - type of change?
+        required: true
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+          
+    - name: Get branch name
+      id: branch-name
+      uses: tj-actions/branch-names@v5.2  
+    
+    - uses: actions-ecosystem/action-regex-match@v2
+      id: regex-match
+      with:
+        text: ${{ steps.branch-name.outputs.current_branch }}
+        regex: 'release\/.*'
+        flags: gm
+
+    - name: Testing
+      run : |
+        echo ${{ steps.regex-match.outputs.match }}
+        echo ${{ steps.branch-name.outputs.current_branch }}
+        
+    
+    - name: Bump version and push tag
+      if: ${{ steps.regex-match.outputs.match != '' }}
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.communication_service_token }}
+        WITH_V: true
+        DEFAULT_BUMP: ${{ github.event.inputs.choice }}
+        PRERELEASE_SUFFIX: ''
+        RELEASE_BRANCHES: 'release.*'
