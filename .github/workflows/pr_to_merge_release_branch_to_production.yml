@@ -40,7 +40,7 @@ jobs:
           pr-to-branch: master
           pr-title: "[Release PR] From Release `${{ github.ref_name }}` to `${{ env.master_branch }}`"
           pr-body: "
-            [![${{ job.name }}](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_${{ env.master_branch }}.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_${{ env.master_branch }}.yml)
+            [![Open a PR from `${{ github.ref_name }}`](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_${{ env.master_branch }}.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_${{ env.master_branch }}.yml)
             \n\n
             Merge changes from Release **`${{ github.ref_name }}`** to `${{ env.master_branch }}`
           "
