@@ -1,4 +1,4 @@
-name: Open PR from Release Branch to ${{ env.master_branch }}
+name: Open PR from Release Branch to Master
 
 on:
   push:
