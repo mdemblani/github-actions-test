@@ -34,7 +34,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr-from-branch: mdemblani:${{ steps.branch-name.outputs.current_branch }}
-          pr-to-branch: production
+          pr-to-branch: master
           pr-title: '[Release PR] From Release "${{ steps.branch-name.outputs.current_branch }}" to Production'
           pr-body: '
             [![Backport Production to Partner](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_production.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_production.yml)
