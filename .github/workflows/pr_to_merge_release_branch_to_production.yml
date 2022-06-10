@@ -7,7 +7,7 @@ on:
 
 jobs:
   pr-to-production:
-    name: 'Open a PR from "${{ github.ref_name }}" to "production"'
+    name: "Open a PR from \"${{ github.ref_name }}\" to \"production\""
     runs-on: ubuntu-latest
     steps:
 
@@ -35,15 +35,15 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr-from-branch: mdemblani:${{ github.ref_name }}
           pr-to-branch: master
-          pr-title: '[Release PR] From Release "${{ steps.branch-name.outputs.current_branch }}" to Production'
-          pr-body: '
+          pr-title: "[Release PR] From Release \"${{ github.ref_name }}\" to Production"
+          pr-body: "
             [![Backport Production to Partner](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_production.yml/badge.svg)](https://github.com/mdemblani/github-actions-test/actions/workflows/pr_to_merge_release_branch_to_production.yml)
             \n\n
-            Merge changes from Release **`${{ steps.branch-name.outputs.current_branch }}`** to Production
-          '
+            Merge changes from Release **`${{ github.ref_name }}`** to Production
+          "
           pr-fail-if-exists: false
           pr-update-if-exists: true
 
       - name: Output from action
         run: |
-          echo "PR URL: ${{ steps.ope.outputs.pr-url }}"
+          echo "PR URL: ${{ steps.open-pr.outputs.pr-url }}"
