@@ -10,7 +10,7 @@ env:
 
 jobs:
   pr-to-production:
-    name: "Open a PR from `${{ github.ref_name }}` to `${{ env.master_branch }}`"
+    name: "Open a PR from `${{ github.ref_name }}`"
     runs-on: ubuntu-latest
     steps:
 
